@@ -17,3 +17,13 @@ variable "availability_zone" {
   type    = string
   default = "us-east-1a"
 }
+
+variable "enable_dns_support" {
+  type    = bool
+  default = true
+}
+
+variable "enable_dns_hostnames" {
+  type    = bool
+  default = true
+}
