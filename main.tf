@@ -46,8 +46,8 @@ resource "aws_subnet" "private_db_subnets" {
 
 resource "aws_subnet" "jump_server_subnet" {
   vpc_id                  = aws_vpc.my_vpc.id
-  cidr_block              = var.jump_server_subnet_cidr
-  availability_zone       = var.jump_server_subnet_availability_zone
+  cidr_block              = var.jump_server_subnet["cidr_block"]
+  availability_zone       = var.jump_server_subnet["availability_zone"]
   map_public_ip_on_launch = true
 
   tags = {
