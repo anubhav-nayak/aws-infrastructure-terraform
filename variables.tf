@@ -48,12 +48,11 @@ variable "private_db_subnets" {
   }
 }
 
-variable "jump_server_subnet_cidr" {
-  type    = string
-  default = "10.10.10.192/28"
-}
+variable "jump_server_subnet" {
+  type = map(string)
 
-variable "jump_server_subnet_availability_zone" {
-  type    = string
-  default = "us-east-1a"
+  default = {
+    "cidr_block"        = "10.10.10.192/28"
+    "availability_zone" = "us-east-1a"
+  }
 }
