@@ -63,7 +63,7 @@ resource "aws_internet_gateway" "my_igw" {
   }
 }
 
-resource "aws_route_table" "public_route_table" {
+resource "aws_route_table" "public_lb_route_table" {
   vpc_id = aws_vpc.my_vpc.id
 
   route {
@@ -72,6 +72,6 @@ resource "aws_route_table" "public_route_table" {
   }
 
   tags = {
-    Name = "public-route-table"
+    Name = "public-lb-route-table"
   }
 }
