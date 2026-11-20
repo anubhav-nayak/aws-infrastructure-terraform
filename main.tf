@@ -75,3 +75,10 @@ resource "aws_route_table" "public_lb_route_table" {
     Name = "public-lb-route-table"
   }
 }
+
+resource "aws_route_table_association" "public_lb_subnet_associations" {
+  for_each = aws_subnet.public_lb_subnets
+
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.public_lb_route_table.id
+}
