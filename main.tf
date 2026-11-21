@@ -95,3 +95,8 @@ resource "aws_route_table" "jump_server_route_table" {
     Name = "jump-server-route-table"
   }
 }
+
+resource "aws_route_table_association" "jump_server_subnet_association" {
+  subnet_id      = aws_subnet.jump_server_subnet.id
+  route_table_id = aws_route_table.jump_server_route_table.id
+}
