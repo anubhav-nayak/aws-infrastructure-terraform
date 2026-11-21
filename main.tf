@@ -130,3 +130,13 @@ resource "aws_route_table_association" "private_app_subnet_associations" {
   subnet_id      = each.value.id
   route_table_id = aws_route_table.private_app_route_table.id
 }
+
+resource "aws_eip" "nat_eips" {
+  for_each = aws_subnet.public_lb_subnets
+
+  domain = "vpc"
+
+  tags = {
+    Name = "nat-eip-${each.key}"
+  }
+}
