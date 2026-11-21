@@ -100,3 +100,18 @@ resource "aws_route_table_association" "jump_server_subnet_association" {
   subnet_id      = aws_subnet.jump_server_subnet.id
   route_table_id = aws_route_table.jump_server_route_table.id
 }
+
+resource "aws_route_table" "private_db_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+
+  tags = {
+    Name = "private-db-route-table"
+  }
+}
+
+resource "aws_route_table_association" "private_db_subnet_associations" {
+  for_each = aws_subnet.private_db_subnets
+
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.private_db_route_table.id
+}
