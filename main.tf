@@ -115,3 +115,18 @@ resource "aws_route_table_association" "private_db_subnet_associations" {
   subnet_id      = each.value.id
   route_table_id = aws_route_table.private_db_route_table.id
 }
+
+resource "aws_route_table" "private_app_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+
+  tags = {
+    Name = "private-app-route-table"
+  }
+}
+
+resource "aws_route_table_association" "private_app_subnet_associations" {
+  for_each = aws_subnet.private_app_subnets
+
+  subnet_id      = each.value.id
+  route_table_id = aws_route_table.private_app_route_table.id
+}
