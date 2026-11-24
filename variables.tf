@@ -56,3 +56,8 @@ variable "jump_server_subnet" {
     "availability_zone" = "us-east-1a"
   }
 }
+
+variable "admin_cidr" {
+  description = "Public IP address allowed to access the jump server through SSH"
+  type        = string
+}
